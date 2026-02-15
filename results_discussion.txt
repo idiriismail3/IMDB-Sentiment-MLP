@@ -1,0 +1,71 @@
+
+IMDB Movie Reviews Sentiment Classification
+
+
+Project Overview:
+
+This project implements a sentiment classifier for IMDB movie reviews using a Multi-Layer Perceptron (MLP) neural network. The objective is to predict whether a review is positive (1) or negative (0).
+
+Feature Engineering:
+
+Two sentiment lexicon-based features were extracted from each review:
+
+1. VADER compound polarity score
+2. TextBlob polarity score
+
+Both features range from -1 (negative sentiment) to +1 (positive sentiment).
+These two numerical features form the input vector to the neural network.
+
+Model Architecture:
+
+The classifier is a Multi-Layer Perceptron (MLP) with the following structure:
+
+- Input layer: 2 features (VADER, TextBlob)
+- Hidden Layer 1: 16 neurons, ReLU activation
+- Hidden Layer 2: 8 neurons, ReLU activation
+- Output Layer: 1 neuron, Sigmoid activation
+
+Training Configuration:
+
+- Loss Function: Binary Crossentropy
+- Optimizer: Adam
+- Batch Size: 32
+- Epochs: 10
+- Train/Test Split: 80% training, 20% testing
+- Random State: 42
+
+Model Performance:
+
+The model was evaluated on 10,000 test samples.
+
+Confusion Matrix Results:
+- True Negatives (TN): 3980
+- False Positives (FP): 981
+- False Negatives (FN): 1310
+- True Positives (TP): 3729
+
+Test Accuracy:
+77.09%
+
+Interpretation:
+
+The model correctly classifies most negative and positive reviews.
+However, there are still misclassifications:
+
+- 981 negative reviews were incorrectly predicted as positive.
+- 1310 positive reviews were incorrectly predicted as negative.
+
+The accuracy curve shows stable convergence around 77% on both training
+and validation sets, indicating that the model is not heavily overfitting.
+
+Since only lexicon-based polarity features were used (without TF-IDF,
+word embeddings, or deep text representations), the achieved performance
+reflects the predictive power of simple sentiment scores.
+
+Conclusion:
+
+This project demonstrates that combining VADER and TextBlob polarity
+scores with a Multi-Layer Perceptron can achieve solid performance
+(77.09% accuracy) on sentiment classification. More advanced feature
+representations could further improve performance.
+
